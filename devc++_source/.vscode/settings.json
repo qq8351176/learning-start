@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "cfloat": "cpp",
+        "iostream": "cpp",
+        "ostream": "cpp",
+        "algorithm": "cpp",
+        "b0208_picpp": "cpp",
+        "闰年判断.C": "cpp",
+        "list": "cpp"
+    }
+}

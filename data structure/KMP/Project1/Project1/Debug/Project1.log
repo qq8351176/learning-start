@@ -1,0 +1,4 @@
+﻿  KMP.c
+D:\desk\data structure\KMP\Project1\KMP.c(60,20): error C2057: 应输入常量表达式
+D:\desk\data structure\KMP\Project1\KMP.c(60,20): error C2466: 不能分配常量大小为 0 的数组
+D:\desk\data structure\KMP\Project1\KMP.c(60,21): error C2133: “next”: 未知的大小
