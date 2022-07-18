@@ -44,3 +44,10 @@ git remote -v 便可以查看到两个关联
 
 如果要推送到gitee 便用git push gitee master
 
+特别的注意事项:
+
+1.上传对应的网站 用对应的网站的账号和密码
+
+2.如果github登录比较慢 建议用开发者边车https://gitee.com/interesting-goods/dev-sidecar
+
+3.github push的时候可能不需要密码而是需要用token
