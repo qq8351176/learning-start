@@ -1,20 +1,41 @@
 {
-    "configurations": [
-        {
-            "name": "Win32",
-            "includePath": [
-                "${workspaceFolder}**"
-            ],
-            "defines": [
-                "_DEBUG",
-                "UNICODE",
-                "_UNICODE"
-            ],
-            "compilerPath": "D:\\code\\mingw64\\bin\\gdb.exe",
-            "cStandard": "c11",                 //按照mingw64的c/c++标准配置
-            "cppStandard": "c++14",
-            "intelliSenseMode": "linux-gcc-x64" //排除警告
-        }
-    ],
-    "version": 4
+  "configurations": [
+    {
+      "name": "windows-gcc-x64",
+      "intelliSenseMode": "windows-gcc-x64",
+      "includePath": [
+        "${workspaceFolder}/**",
+        "${workspaceFolder}",
+        "D:/code/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++",
+        "D:/code/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32",
+        "D:/code/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward",
+        "D:/code/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include",
+        "D:/code/mingw64/include",
+        "D:/code/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed",
+        "D:/code/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/7.3.0/../../../../x86_64-w64-mingw32/include"
+      ],
+      "defines": [
+        "_DEBUG",
+        "UNICODE",
+        "__GNUC__=7",
+        "__cdecl=__attribute__((__cdecl__))"
+      ],
+      "compilerPath": "D:/code/mingw64/bin/gcc.exe",
+      "browse": {
+        "path": [
+          "${workspaceFolder}",
+          "D:/code/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++",
+          "D:/code/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32",
+          "D:/code/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward",
+          "D:/code/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include",
+          "D:/code/mingw64/include",
+          "D:/code/mingw64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed",
+          "D:/code/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/7.3.0/../../../../x86_64-w64-mingw32/include"
+        ]
+      },
+      "cppStandard": "${default}",
+      "cStandard": "${default}"
+    }
+  ],
+  "version": 4
 }
