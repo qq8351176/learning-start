@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "位段.C": "cpp",
+        "contact.h": "c",
+        "assert.h": "c",
+        "stdio.h": "c"
+    }
+}
