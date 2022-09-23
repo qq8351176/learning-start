@@ -17,7 +17,7 @@ int main()
     do
     {
         menu();
-        printf("ÇëÊäÈë²Ù×÷Êı:");
+        printf("è¯·è¾“å…¥æ“ä½œæ•°:");
         scanf("%d", &input);
         switch (input)
         {
@@ -39,11 +39,12 @@ int main()
         case SORT:
             SortContact(&con);
             break;
-        case 0:
-            printf("ÍË³öÍ¨Ñ¶Â¼");
+        case EXIT:
+            DestoryContact(&con);
+            printf("é€€å‡ºé€šè®¯å½•");
             break;
         default:
-            printf("Ñ¡Ôñ´íÎó");
+            printf("é€‰æ‹©é”™è¯¯");
 
             break;
         }
