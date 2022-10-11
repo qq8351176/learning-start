@@ -3,6 +3,8 @@
         "位段.C": "cpp",
         "contact.h": "c",
         "assert.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "2022-10-10.C": "cpp",
+        "10_10文件探究.C": "cpp"
     }
 }

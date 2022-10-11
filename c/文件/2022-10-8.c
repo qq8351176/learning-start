@@ -68,12 +68,33 @@
 //     printf("%s %d %f",data.name,data.age,data.score);
 //     fclose(pf);
 // }
+// int main()
+// {
+//     int ch = fgetc(stdin);
+//     fputc(ch,stdout);
+
+//         int ch = fgetc(stdin);
+//     fputc(ch,stdout);
+//     return 0;
+// }
+struct s
+{
+    char name[10];
+    int age;
+    float score;
+};
 int main()
 {
-    int ch = fgetc(stdin);
-    fputc(ch,stdout);
+    char buf[100]= {0};
+    struct s tmp = {0};
+    struct s s1 ={"kwd",18,95.5f};
 
-        int ch = fgetc(stdin);
-    fputc(ch,stdout);
+    // +号是多余的 是为了自己进行验证 
+    sprintf(buf,"%s +%d+ %f",s1.name,s1.age,s1.score);
+    printf("%s \n",buf);
+    
+    sscanf(buf,"%s +%d +%f",tmp.name,&tmp.age,&tmp.score);
+
+    printf("%s %d %f",tmp.name,tmp.age,tmp.score);
     return 0;
 }

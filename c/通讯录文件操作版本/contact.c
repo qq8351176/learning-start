@@ -12,7 +12,7 @@ void menu()
     printf("*******************************\n");
 }
 
-// é™æ€ç‰ˆæœ¬
+// ¾²Ì¬°æ±¾
 // void InitContact(struct Contact *pc)
 // {
 //     assert(pc);
@@ -23,6 +23,7 @@ void menu()
 void InitContact(struct Contact *pc)
 {
     assert(pc);
+    
     pc->data = (struct PeoInfo *)malloc(3 * sizeof(struct PeoInfo));
     if (pc->data == NULL)
     {
@@ -31,42 +32,44 @@ void InitContact(struct Contact *pc)
     }
     pc->sz = 0;
     pc->capacity = DEFAULT_SZ;
+
+    LoadContact(pc);
 }
 
-//è€ç‰ˆæœ¬
+//ÀÏ°æ±¾
 // void AddContact(struct Contact *pc)
 // {
 //     assert(pc);
 //     if (pc->sz == 100)
 //     {
-//         printf("é€šè®¯å½•æ»¡äº†");
+//         printf("Í¨Ñ¶Â¼ÂúÁË");
 //         return;
 //     }
-//     printf("è¯·è¾“å…¥åå­—");
+//     printf("ÇëÊäÈëÃû×Ö");
 //     scanf("%s", pc->data[pc->sz].name);
-//     printf("è¯·è¾“å…¥æ€§åˆ«");
+//     printf("ÇëÊäÈëĞÔ±ğ");
 //     scanf("%s", pc->data[pc->sz].sex);
-//     printf("è¯·è¾“å…¥å¹´é¾„");
+//     printf("ÇëÊäÈëÄêÁä");
 //     scanf("%d", &pc->data[pc->sz].age);
-//     printf("è¯·è¾“å…¥åœ°å€");
+//     printf("ÇëÊäÈëµØÖ·");
 //     scanf("%s", pc->data[pc->sz].addr);
-//     printf("è¯·è¾“å…¥ç”µè¯");
+//     printf("ÇëÊäÈëµç»°");
 //     scanf("%s", pc->data[pc->sz].tele);
 //     pc->sz++;
-//     printf("è¾“å…¥æˆåŠŸ");
+//     printf("ÊäÈë³É¹¦");
 // }
 
 static int Check_capcity(struct Contact *pc)
 {
     if (pc->sz == pc->capacity)
     {
-        //å¢åŠ å®¹é‡
+        //Ôö¼ÓÈİÁ¿
         struct PeoInfo *ptr = (struct PeoInfo *)realloc(pc->data, (pc->capacity + 2) * sizeof(struct PeoInfo));
         if (ptr != NULL)
         {
             pc->data == ptr;
             pc->capacity += INC_SZ;
-            printf("å¢å®¹æˆåŠŸ\n");
+            printf("ÔöÈİ³É¹¦\n");
             return 1;
         }
         else
@@ -88,24 +91,24 @@ void AddContact(struct Contact *pc)
         return;
     }
 
-    printf("è¯·è¾“å…¥åå­—");
+    printf("ÇëÊäÈëÃû×Ö");
     scanf("%s", pc->data[pc->sz].name);
-    printf("è¯·è¾“å…¥æ€§åˆ«");
+    printf("ÇëÊäÈëĞÔ±ğ");
     scanf("%s", pc->data[pc->sz].sex);
-    printf("è¯·è¾“å…¥å¹´é¾„");
+    printf("ÇëÊäÈëÄêÁä");
     scanf("%d", &pc->data[pc->sz].age);
-    printf("è¯·è¾“å…¥åœ°å€");
+    printf("ÇëÊäÈëµØÖ·");
     scanf("%s", pc->data[pc->sz].addr);
-    printf("è¯·è¾“å…¥ç”µè¯");
+    printf("ÇëÊäÈëµç»°");
     scanf("%s", pc->data[pc->sz].tele);
     pc->sz++;
-    printf("è¾“å…¥æˆåŠŸ");
+    printf("ÊäÈë³É¹¦");
 }
 
 void ShowContact(const struct Contact *pc)
 {
     int i = 0;
-    printf("%20s\t%5s\t%5s\t%12s\t%30s\t\n", "å§“å", "æ€§åˆ«", "å¹´é¾„", "ç”µè¯", "åœ°å€");
+    printf("%20s\t%5s\t%5s\t%12s\t%30s\t\n", "ĞÕÃû", "ĞÔ±ğ", "ÄêÁä", "µç»°", "µØÖ·");
 
     for (int i = 0; i < pc->sz; i++)
     {
@@ -132,12 +135,12 @@ static int FindByName(const struct Contact *pc, char name[])
 void DelContact(struct Contact *pc)
 {
     char name[MAX_NAME];
-    printf("è¯·è¾“å…¥è¦åˆ é™¤äººçš„åå­—");
+    printf("ÇëÊäÈëÒªÉ¾³ıÈËµÄÃû×Ö");
     scanf("%s", name);
     int ret = FindByName(pc, name);
     if (ret == -1)
     {
-        printf("è¦åˆ é™¤äººçš„ä¸å­˜åœ¨\n");
+        printf("ÒªÉ¾³ıÈËµÄ²»´æÔÚ\n");
     }
     else
     {
@@ -152,7 +155,7 @@ void DelContact(struct Contact *pc)
 void search(const struct Contact *pc)
 {
     char name[MAX_NAME];
-    printf("è¯·è¾“å…¥è¦æŸ¥æ‰¾äººçš„åå­—:");
+    printf("ÇëÊäÈëÒª²éÕÒÈËµÄÃû×Ö:");
     scanf("%s", name);
     int ret = FindByName(pc, name);
 }
@@ -160,24 +163,24 @@ void search(const struct Contact *pc)
 void modify(struct Contact *pc)
 {
     char name[MAX_NAME];
-    printf("è¯·è¾“å…¥è¦ä¿®æ”¹äººçš„åå­—");
+    printf("ÇëÊäÈëÒªĞŞ¸ÄÈËµÄÃû×Ö");
     scanf("%s", name);
     int ret = FindByName(pc, name);
     if (ret == -1)
-        printf("ä¿®æ”¹çš„äººä¸å­˜åœ¨");
+        printf("ĞŞ¸ÄµÄÈË²»´æÔÚ");
     else
     {
-        printf("è¯·è¾“å…¥åå­—");
+        printf("ÇëÊäÈëÃû×Ö");
         scanf("%s", pc->data[ret].name);
-        printf("è¯·è¾“å…¥æ€§åˆ«");
+        printf("ÇëÊäÈëĞÔ±ğ");
         scanf("%s", pc->data[ret].sex);
-        printf("è¯·è¾“å…¥å¹´é¾„");
+        printf("ÇëÊäÈëÄêÁä");
         scanf("%d", &pc->data[ret].age);
-        printf("è¯·è¾“å…¥åœ°å€");
+        printf("ÇëÊäÈëµØÖ·");
         scanf("%s", pc->data[ret].addr);
-        printf("è¯·è¾“å…¥ç”µè¯");
+        printf("ÇëÊäÈëµç»°");
         scanf("%s", pc->data[ret].tele);
-        printf("è¾“å…¥æˆåŠŸ");
+        printf("ÊäÈë³É¹¦");
     }
 }
 
@@ -197,4 +200,44 @@ void DestoryContact(struct Contact *pc)
     pc->data = NULL;
     pc->capacity = 0;
     pc->sz = 0;
+}
+
+void SaveContent(struct Contact *pc)
+{
+    FILE *pfw = fopen("data.txt", "wb");
+    if (pfw == NULL)
+    {
+        perror("SaveContent");
+        return;
+    }
+
+    int i = 0;
+    for (i < 0; i < pc->sz; i++)
+    {
+        fwrite(pc->data + i, (sizeof(struct PeoInfo)), 1, pfw);
+    }
+    fclose(pfw);
+    pfw = NULL;
+}
+
+void LoadContact(struct Contact *pc)
+{
+    FILE *pf = fopen("data.txt", "rb");
+    if (pf == NULL)
+    {
+        perror("loadcontact");
+        return;
+    }
+    struct PeoInfo tmp = {0};
+
+    while (fread(&tmp, sizeof(struct PeoInfo), 1, pf))
+    {
+        Check_capcity(pc);
+        pc->data[pc->sz] = tmp;
+        pc->sz++;
+
+    }
+
+    fclose(pf);
+    pf = NULL;
 }

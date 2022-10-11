@@ -17,7 +17,7 @@ int main()
     do
     {
         menu();
-        printf("璇疯緭鍏ユ搷浣滄暟:");
+        printf("请输入操作数:");
         scanf("%d", &input);
         switch (input)
         {
@@ -40,11 +40,12 @@ int main()
             SortContact(&con);
             break;
         case EXIT:
+            SaveContent(&con);
             DestoryContact(&con);
-            printf("閫�鍑洪�氳褰?");
+            printf("退出通讯录:");
             break;
         default:
-            printf("閫夋嫨閿欒");
+            printf("选择错误");
 
             break;
         }

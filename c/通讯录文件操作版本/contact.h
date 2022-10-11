@@ -13,7 +13,7 @@
 #define DEFAULT_SZ 3
 #define INC_SZ 2
 
-//è¡¨ç¤ºä¸€ä¸ªäººçš„ä¿¡æ¯
+//±íÊ¾Ò»¸öÈËµÄĞÅÏ¢
 struct PeoInfo
 {
     char name[MAX_NAME];
@@ -23,7 +23,8 @@ struct PeoInfo
     char addr[MAX_ADDR];
 };
 
-// è€ç‰ˆæœ¬
+// ÀÏ°æ±¾
+// ¾²Ì¬µÄ°æ±¾
 // struct Contact
 // {
 //     struct PeoInfo data[MAX];
@@ -31,34 +32,40 @@ struct PeoInfo
 // };
 
 
-// æ–°ç‰ˆæœ¬
+// ĞÂ°æ±¾
 struct Contact
 {
     struct PeoInfo *data;
     int sz;
-    int capacity;//å®¹é‡
+    int capacity;//ÈİÁ¿
 };
 
-//é€šè®¯å½•çš„åˆå§‹åŒ–
+//Í¨Ñ¶Â¼µÄ³õÊ¼»¯
 void InitContact(struct Contact *pc);
 
-//é€šè®¯å½•çš„ä¿¡æ¯çš„å¢åŠ 
+//Í¨Ñ¶Â¼µÄĞÅÏ¢µÄÔö¼Ó
 void AddContact(struct Contact *pc);
 
-//æ˜¾ç¤ºé€šè®¯å½•ä¸­çš„ä¿¡æ¯
+//ÏÔÊ¾Í¨Ñ¶Â¼ÖĞµÄĞÅÏ¢
 void ShowContact(const struct Contact *pc);
 
-//åˆ é™¤ä¿¡æ¯
+//É¾³ıĞÅÏ¢
 void DelContact(struct Contact* pc);
 
-//æŸ¥æ‰¾ä¿¡æ¯
+//²éÕÒĞÅÏ¢
 void search(const struct Contact* pc);
 
-//ä¿®æ”¹ä¿¡æ¯
+//ĞŞ¸ÄĞÅÏ¢
 void modify(struct Contact* pc);
 
-//æŒ‰ç…§å¹´é¾„æ’åºä¿¡æ¯
+//°´ÕÕÄêÁäÅÅĞòĞÅÏ¢
 void SortContact(struct Contact * pc);
 
-//é”€æ¯é€šè®¯å½•
+//Ïú»ÙÍ¨Ñ¶Â¼
 void DestoryContact(struct Contact * pc);
+
+// ±£´æ
+void SaveContent(struct Contact *pc);
+
+// ¼ÓÔØ
+void LoadContact(struct Contact *pc);
