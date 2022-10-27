@@ -1,10 +1,25 @@
 {
     "files.associations": {
-        "位段.C": "cpp",
-        "contact.h": "c",
-        "assert.h": "c",
-        "stdio.h": "c",
-        "2022-10-10.C": "cpp",
-        "10_10文件探究.C": "cpp"
-    }
+      "位段.C": "cpp",
+      "contact.h": "c",
+      "assert.h": "c",
+      "stdio.h": "c",
+      "2022-10-10.C": "cpp",
+      "10_10文件探究.C": "cpp",
+      "list.C": "cpp",
+      "编译.C": "cpp"
+    },
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+          "source": "PowerShell", //一般推荐使用powershell
+          "overrideName": true,
+          "args": ["-NoExit", "/c", "chcp 65001"],
+          "icon": "terminal-powershell",
+          "env": {
+            "TEST_VAR": "value"
+          }
+        }
+      },
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+
 }
