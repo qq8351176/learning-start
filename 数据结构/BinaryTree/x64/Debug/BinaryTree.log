@@ -1,0 +1,6 @@
+﻿  Heap.c
+D:\1学习\gitee\learning-start\数据结构\BinaryTree\Heap.c(5,37): warning C4047: “函数”:“size_t”与“HPDataType *”的间接级别不同
+D:\1学习\gitee\learning-start\数据结构\BinaryTree\Heap.c(5,34): warning C4024: “malloc”: 形参和实参 1 的类型不同
+D:\1学习\gitee\learning-start\数据结构\BinaryTree\Heap.c(5,58): warning C4020: “malloc”: 实参太多
+D:\1学习\gitee\learning-start\数据结构\BinaryTree\Heap.c(11,2): warning C4013: “memcpy”未定义；假设外部返回 int
+  BinaryTree.vcxproj -> D:\1学习\gitee\learning-start\数据结构\BinaryTree\x64\Debug\BinaryTree.exe
