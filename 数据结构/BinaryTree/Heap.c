@@ -1,6 +1,6 @@
 #include "Heap.h"
 
-//大堆小堆的创建需要通过修改 pop 和push 尤其注意要修改 if (child + 1 < n && a[child] < a[child+1])
+//大堆小堆的创建需要通过修改 pop 和push 尤其注意要修改 if (child + 1 < n && a[child] < a[child+1])  
 
 void HeapCreate(HP* php, HPDataType* a, int n)
 {
