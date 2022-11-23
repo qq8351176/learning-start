@@ -1,8 +1,11 @@
 #pragma once
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
 #include <stdbool.h>
+#include <string.h>
+#include<time.h>
 typedef int HPDataType;
 typedef struct Heap
 {
@@ -18,3 +21,4 @@ void AdjustDown(HPDataType* a, int n, int parent);
 void HeapPrint(HP* php);
 void HeapPop(HP* php);
 HPDataType HeapTop(HP* php);
+void HeapCreate(HP* php, HPDataType* a, int n);

@@ -5,7 +5,7 @@
 void HeapCreate(HP* php, HPDataType* a, int n)
 {
 	assert(php);
-	php->a = (HPDataType*)malloc(php->a, sizeof(HPDataType) * n);
+	php->a = (HPDataType*)malloc(sizeof(HPDataType) * n);
 	if (php->a == NULL)
 	{
 		perror("realloc fail");
@@ -17,7 +17,7 @@ void HeapCreate(HP* php, HPDataType* a, int n)
 	// ½¨¶ÑËã·¨
 	for (int i = (n - 1 - 1) / 2; i >= 0; --i)
 	{
-		AdjustDown(a, n, i);
+		AdjustDown(php->a, n, i);
 	}
 }
 
@@ -97,11 +97,11 @@ void AdjustDown(HPDataType* a,int n, int parent)
 
 	while (child < n)
 	{
-		if (child + 1 < n && a[child] < a[child+1])
+		if (child + 1 < n && a[child] > a[child+1])
 		{
 			child++;
 		}
-		if (a[child] > a[parent]) {
+		if (a[child] < a[parent]) {
 			swap(&a[child], &a[parent]);
 			parent = child;
 			child = parent * 2 + 1;
