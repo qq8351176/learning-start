@@ -245,6 +245,34 @@ int TreeLeafSize(BTNode* root)
 	else if (!root->left && !root->right) return 1;
 	else return 0;
 }
+
+int TreeHeight(BTNode* root) 
+{
+	if (root == NULL)
+	{
+		return 0;
+	}
+	//return max(TreeHeight(root->right), TreeHeight(root->left))+1;
+	//return TreeHeight(root->left) > TreeHeight(root->right) ? TreeHeight(root->left) + 1 : TreeHeight(root->right) + 1;
+	int leftHeight = TreeHeight(root->left);
+	int rightHeight = TreeHeight(root->right);
+
+	return leftHeight > rightHeight ? leftHeight + 1 : rightHeight + 1;
+}
+
+//求第k层的节点个数
+int TreekLevelSize(BTNode * root, int k)
+{
+	if (root == NULL) {
+		return 0;
+	}
+	if (k == 1) {
+		return 1;
+	}
+	return TreekLevelSize(root->left, k - 1) + TreekLevelSize(root->right, k - 1);
+
+}
+
 int main()
 {
 	BTNode* root;
@@ -254,19 +282,21 @@ int main()
 	BTNode* n4 = BuyBTNode(4);
 	BTNode* n5 = BuyBTNode(5);
 	BTNode* n6 = BuyBTNode(6);
+	BTNode* n7 = BuyBTNode(7);
 	n1->left = n2;
 	n2->left = n3;
 	n1->right = n4;
 	n4->left = n5;
 	n4->right = n6;
-	n3->right = n3->left = NULL;
-	n5->right = n5->left = NULL;
+	n3->left = n7;
+
 	root = n1;
 	//PostOrder(root);
 
 	
-	printf("%d", TreeLeafSize(root));
-
+	printf("TreeLeafSize:%d\n", TreeLeafSize(root));
+	printf("TreeHeight:%d\n", TreeHeight(root));
+	printf("TreekLevelSize(3):%d\n", TreekLevelSize(root, 3));
 
 	return 0;
 }

@@ -1,5 +1,5 @@
 ﻿  test.c
-D:\1学习\gitee\learning-start\数据结构\BinaryTree\test.c(70,3): warning C4013: “swap”未定义；假设外部返回 int
-D:\1学习\gitee\learning-start\数据结构\BinaryTree\test.c(128,8): warning C4244: “函数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+D:\1学习\gitee\learning-start\数据结构\BinaryTree\test.c(70,7): warning C4013: “swap”未定义；假设外部返回 int
+D:\1学习\gitee\learning-start\数据结构\BinaryTree\test.c(128,15): warning C4244: “函数”: 从“time_t”转换到“unsigned int”，可能丢失数据
 D:\1学习\gitee\learning-start\数据结构\BinaryTree\test.c(219,1): warning C4133: “初始化”: 从“BTDataType *”到“BTNode *”的类型不兼容
   BinaryTree.vcxproj -> D:\1学习\gitee\learning-start\数据结构\BinaryTree\x64\Debug\BinaryTree.exe
