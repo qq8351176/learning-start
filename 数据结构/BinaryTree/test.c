@@ -1,4 +1,5 @@
 #include "Heap.h"
+
 void test()
 {
 	int array[] = { 25,15,19,18,28,34,65,49,27,37 };
@@ -177,7 +178,7 @@ typedef struct BinaryTreeNode {
 	struct BinaryTreeNode* left;
 	struct BinaryTreeNode* right;
 }BTNode;
-
+#include  "queue.h"
 void PrevOrder(BTNode* root)
 {
 	if (root == NULL)
@@ -273,6 +274,115 @@ int TreekLevelSize(BTNode * root, int k)
 
 }
 
+BTNode* TreeFind(BTNode* root, BTDataType x)
+{
+	if (root == NULL)
+	{
+		return NULL;
+	}
+
+	if (root->data == x)
+	{
+		return root;
+	}
+
+	//return TreeFind(root->left, x) || TreeFind(root->right, x);
+	//两个指针不能够相互与或
+
+	//这种写法在某些编译器下可能报错 不是每一个路径都有返回值
+	//TreeFind(root->left, x);
+	//TreeFind(root->right, x);
+
+	BTNode* left = TreeFind(root->left, x);
+	BTNode* right = TreeFind(root->right, x);
+	if (left != NULL)
+	{
+		return left;
+	}
+	if (right != NULL)
+	{
+		return right;
+	}
+}
+
+
+
+void LevelOrder(BTNode* root)
+{
+	Queue q;
+	QueueInit(&q);
+	if (root)
+		QueuePush(&q, root);
+
+	while (!QueueEmpty(&q))
+	{
+		BTNode* front = QueueFront(&q);
+		printf("%d", front->data);
+		QueuePop(&q);
+		if (front->left) {
+			QueuePush(&q, front->left);
+		}
+		if (front->right) {
+			QueuePush(&q, front->right);
+		}
+
+	}
+	printf("\n");
+
+	QueueDestory(&q);
+}
+
+bool TreeComplete(BTNode* root)
+{
+	Queue q;
+	QueueInit(&q);
+	if (root)
+		QueuePush(&q, root);
+
+	QueueDestory(&q);
+	while (!QueueEmpty(&q))
+	{
+		BTNode* front = QueueFront(&q);
+		QueuePop(&q);
+
+		if (front == NULL)
+			break;
+		else
+		{
+			QueuePush(&q, front->left);
+			QueuePush(&q, front->right);
+		}
+	}
+	
+
+	// 出到空以后， 如果后面全是空的话 则是一个完全的二叉树 否则不是
+
+	while (!QueueEmpty(&q))
+	{
+		BTNode* front = QueueFront(&q);
+		QueuePop(&q);
+
+		if (front != NULL)
+		{
+			QueueDestory(&q);
+			return false;
+		}
+	}
+	
+	QueueDestory(&q);
+	return true;
+}
+
+void TreeDestory(BTNode* root)
+{
+	if (root == NULL)
+	{
+		return;
+	}
+	TreeDestory(root->left);
+	TreeDestory(root->right);
+	free(root);
+}
 int main()
 {
 	BTNode* root;
@@ -294,9 +404,14 @@ int main()
 	//PostOrder(root);
 
 	
-	printf("TreeLeafSize:%d\n", TreeLeafSize(root));
-	printf("TreeHeight:%d\n", TreeHeight(root));
-	printf("TreekLevelSize(3):%d\n", TreekLevelSize(root, 3));
+	//printf("TreeLeafSize:%d\n", TreeLeafSize(root));
+	//printf("TreeHeight:%d\n", TreeHeight(root));
+	//printf("TreekLevelSize(3):%d\n", TreekLevelSize(root, 3));
 
+	//printf("TreeFind(3):%p\n", TreeFind(root, 3));
+
+	//printf("n3:%p\n", n3);
+
+	LevelOrder(root);
 	return 0;
 }
