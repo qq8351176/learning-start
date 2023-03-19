@@ -1,0 +1,9 @@
+﻿  sort.c
+D:\1学习\gitee\learning-start\数据结构\sort\sort\sort.c(249,11): warning C4098: “QuickSort”:“void”函数返回值
+  test.c
+D:\1学习\gitee\learning-start\数据结构\sort\sort\test.c(40,15): warning C4244: “函数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+  正在生成代码
+  Previous IPDB not found, fall back to full compilation.
+  All 11 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  已完成代码的生成
+  sort.vcxproj -> D:\1学习\gitee\learning-start\数据结构\sort\sort\Release\sort.exe
