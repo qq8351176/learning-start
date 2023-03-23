@@ -1,5 +1,6 @@
 #include "Sort.h"
-
+#include "Stack.h"
+#include <string.h>
 void Swap(int* a, int* b)
 {
 	int tmp = *a;
@@ -286,7 +287,28 @@ int PastSort3(int* a, int begin, int end)
 
 
 //小区间优化 当区间较小时 用直接插入排序 按照一个正三角形  去掉最后一层 递归就能少一半
-void QuickSort(int* a, int begin,int end)
+//void QuickSort(int* a, int begin,int end)
+//{
+//	if (begin >= end)
+//	{
+//		return;
+//	}
+//
+//	if ((end - begin + 1) < 15)
+//	{
+//		//小区间的时候直接插入
+//		InsertSort(a+begin, end - begin + 1);
+//	}
+//	else
+//	{
+//		int keyi = PastSort3(a, begin,end);
+//		QuickSort(a, begin, keyi - 1);
+//		QuickSort(a, keyi + 1, end);
+//	}
+//}
+
+//三路划分
+void QuickSort(int* a, int begin, int end)
 {
 	if (begin >= end)
 	{
@@ -296,14 +318,182 @@ void QuickSort(int* a, int begin,int end)
 	if ((end - begin + 1) < 15)
 	{
 		//小区间的时候直接插入
-		InsertSort(a+begin, end - begin + 1);
+		InsertSort(a + begin, end - begin + 1);
 	}
 	else
 	{
-		int keyi = PastSort3(a, begin,end);
-		QuickSort(a, begin, keyi - 1);
-		QuickSort(a, keyi + 1, end);
+		int mid = GetMidIndex(a, begin, end);
+		Swap(&a[begin], &a[mid]);
+
+		int left = begin, right = end;
+		int key = a[begin];
+		int cur = begin + 1;
+		while (cur <= right)
+		{
+			if (a[cur] < key)
+			{
+				Swap(&a[cur], &a[left]);
+				cur++;
+				left++;
+			}
+			else if (a[cur] > key)
+			{
+				Swap(&a[cur], &a[right]);
+				--right;
+			}
+			else
+			{
+				cur++;
+			}
+		}
+		QuickSort(a, begin, left - 1);
+		QuickSort(a, right + 1, end);
 	}
 }
 
 
+void QuickSortNonR(int* a, int begin, int end)
+{
+	ST st;
+	StackInit(&st);
+	StackPush(&st,begin);
+	StackPush(&st, end);
+
+	while (!StackEmpty(&st))
+	{
+		int right = StackTop(&st);
+		StackPop(&st);
+		int left = StackTop(&st);
+		StackPop(&st);
+
+		int keyi = PastSort3(a, left, right);
+
+		if (keyi + 1 < right)
+		{
+			StackPush(&st, keyi + 1);
+			StackPush(&st, right);
+		}
+
+		if (left < keyi - 1)
+		{
+			StackPush(&st, left);
+			StackPush(&st, keyi - 1);
+		}
+	}
+	StackDestroy(&st);
+}
+ 
+void _MergeSort(int* a, int begin,int end,int* tmp) 
+{
+	if(begin >= end)
+	{ 
+		return;
+	}
+
+	int mid = (begin + end) / 2;
+	//[begin,mid] [mid+1,end]
+	_MergeSort(a, begin, mid, tmp);
+	_MergeSort(a, mid + 1, end, tmp);
+	//归并
+	int begin1 = begin, end1 = mid;
+	int begin2 = mid + 1, end2 = end;
+	int i = begin;
+	while (begin1 <= end1 && begin2 <= end2)
+	{
+		if (a[begin1] <= a[begin2])
+		{
+			tmp[i++] = a[begin1++];
+		}
+		else
+		{
+			tmp[i++] = a[begin2++];
+		}
+	}
+
+	while (begin1 <= end1)
+	{
+		tmp[i++] = a[begin1++];
+	}
+
+	while (begin2 <= end2)
+	{
+		tmp[i++] = a[begin2++];
+	}
+
+	memcpy(a + begin, tmp + begin,sizeof(int)*(end-begin+1));
+
+}
+void MergeSort(int* a, int n)
+{
+	int* tmp = (int*)malloc(sizeof(int) * n);
+	if(tmp == NULL)
+	{
+		perror("malloc fail");
+		exit(-1);
+	}
+	_MergeSort(a, 0, n - 1, tmp);
+
+	free(tmp);
+	tmp = NULL;
+}
+void MergeSortNonR(int* a, int n)
+{
+	int* tmp = (int*)malloc(sizeof(int) * n);
+	if (tmp == NULL)
+	{
+		perror("malloc fail");
+		exit(-1);
+	}
+	int rangeN = 1;
+	while (rangeN < n)
+	{
+		for (int i = 0; i < n; i += 2 * rangeN)
+		{
+
+			int begin1 = i, end1 = i + rangeN - 1;
+			int begin2 = i + rangeN, end2 = i + 2 * rangeN - 1;
+			int j = i;
+			if (end1 >= n)
+			{
+				break;
+			}
+			else if (begin2 >= n)
+			{
+				break;
+			}
+			else if (end2 >= n)
+			{
+				end2 = n - 1;
+			}
+
+			while (begin1 <= end1 && begin2 <= end2)
+			{
+				if (a[begin1] <= a[begin2])
+				{
+					tmp[j++] = a[begin1++];
+				}
+				else
+				{
+					tmp[j++] = a[begin2++];
+				}
+			}
+
+			while (begin1 <= end1)
+			{
+				tmp[j++] = a[begin1++];
+			}
+
+			while (begin2 <= end2)
+			{
+				tmp[j++] = a[begin2++];
+			}
+
+			memcpy(a + i, tmp + i, sizeof(int) * (end2 - i + 1));
+			
+		}
+		rangeN *= 2;
+	}
+	
+	free(tmp);
+	tmp = NULL;
+}

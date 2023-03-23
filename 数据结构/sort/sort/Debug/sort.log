@@ -1,3 +1,4 @@
 ﻿  test.c
-D:\1学习\gitee\learning-start\数据结构\sort\sort\test.c(40,15): warning C4244: “函数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+D:\1学习\gitee\learning-start\数据结构\sort\sort\test.c(48,15): warning C4244: “函数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+D:\1学习\gitee\learning-start\数据结构\sort\sort\test.c(133,1): warning C4305: “初始化”: 从“double”到“float”截断
   sort.vcxproj -> D:\1学习\gitee\learning-start\数据结构\sort\sort\Debug\sort.exe
